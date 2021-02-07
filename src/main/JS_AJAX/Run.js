@@ -1,8 +1,8 @@
 
 import {XHR} from './XHR.js';
-import {boldWordInInput, deleteBoldWordInInput, detachWhenLengthPNull,
+import {boldWordInInput, deleteBoldWordInInput, detachWhenLengthPNull, detachWhenPTextEqualeName,
     addTagPMenu,inputWordFromMenu,cleanInput,geolocation,infoOtherNearCities} from "./Today.js";
-import {dayDateTime} from "./FiveDays.js";
+import {dayDateTime, clickInputNav} from "./FiveDays.js";
 import {DateTimeWork} from "./DateTimeWork.js"
 
 let url = "CityOfUkrain.json";
@@ -21,7 +21,7 @@ export let xhr = new XHR(false);
         infoOtherNearCities(urlCoord,xhr);
         //вывести ошибку 404
         if (!regions)  return;
-
+            clickInputNav();
         // Ф-ция ввода наименования населенного пункта в поле поиска, выдача выборки совпадений ниже поля ввода
             $('#header > form > input[type=search]').keyup(function (event) {
                 if (!event.shiftKey || !event.altKey || !event.ctrlKey) {
@@ -32,6 +32,7 @@ export let xhr = new XHR(false);
                             let regionName = regions[i].name;
                             for (let j = 0; j < regions[i].areas.length; j++) {
                                 addTagPMenu(regions[i].areas[j].name, regionName, regions[i].areas[j].name, text);
+                                detachWhenPTextEqualeName(regions[i].areas[j].name);
                             }
                         }
                     }

@@ -86,7 +86,7 @@ export function inputWordFromMenu(urlTarget, urlCoord, xhr){
             weatherByDate(cities);
             infoNearCities(urlCoord,xhr,dataWeather);
         });
-}   //======//
+}
 
     //Ф-ция удаления тегов Р из под input
 export function detachWhenLengthPNull() {
@@ -101,10 +101,10 @@ export function detachWhenLengthPNull() {
 }
 
 //Ф-ция удаляет теги Р с одинаковыми значениями
-function detachWhenPTextEqualeName(name) {
+export function detachWhenPTextEqualeName(name) {
      document.querySelectorAll('#header > form > p')
          .forEach(p => () => {
-             if(p.innerText === name){
+             if(p.innerHTML === name){
              this.detach();
          }
      });
@@ -268,12 +268,11 @@ export function addTagPMenu(name,regionName,regions,text) {
         }
         for(let a = 0; a < pp.length; a++){
             for(let b = (a + 1); b < pp.length; b++){
-                if(pp[a].innerText === pp[b].innerText){
+                if(pp[a].innerHTML === pp[b].innerHTML){
                     pp[b].remove();
                 }
             }
         }
-
 
         //эта же ф-ция на JQuery
         // if ($('#header > form > p').length < 10) {
