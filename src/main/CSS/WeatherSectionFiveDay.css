@@ -1,0 +1,38 @@
+#section_fiveDay_first{
+    display: inline-flex;
+    justify-content: space-between;
+}
+#section_fiveDay_first>div{
+    background-color: #bbc0ff;
+    width: 20%;
+    border: 1px solid gainsboro;
+    text-align: center;
+    height: auto;
+}
+#section_fiveDay_first h3{
+    color: cornflowerblue;
+    height: 20px;
+}
+#section_fiveDay_first > div:nth-child(n) > span{
+    color: cornflowerblue;
+    font-weight: bold;
+}
+#section_fiveDay_first>div div{
+    text-align: center;
+    font-size: 25px;
+}
+#section_fiveDay_first>div img{
+    padding-left: 35%;
+    height: 100px;
+    width: 85px;
+}
+#section_fiveDay .second_content_section{
+    margin: 0;
+}
+#section_fiveDay > div.second_content_section > table > tbody > tr:nth-child(1) > th:nth-child(1){
+    font-size: 25px;
+}
+#section_fiveDay > div:nth-child(2) > table > tbody > tr:nth-child(n) > td:nth-child(3) > img{
+    width: 100px;
+    height: 85px;
+}
