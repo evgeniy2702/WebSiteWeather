@@ -1,8 +1,15 @@
-
 import {XHR} from './XHR.js';
-import {boldWordInInput, deleteBoldWordInInput, detachWhenLengthPNull, detachWhenPTextEqualeName,
-    addTagPMenu,inputWordFromMenu,cleanInput,geolocation,infoOtherNearCities} from "./Today.js";
-import {dayDateTime, clickInputNav} from "./FiveDays.js";
+import {
+    addTagPMenu,
+    boldWordInInput,
+    cleanInput,
+    deleteBoldWordInInput,
+    detachWhenLengthPNull,
+    geolocation,
+    infoOtherNearCities,
+    inputWordFromMenu
+} from "./Today.js";
+import {clickInputNav, dayDateTime} from "./FiveDays.js";
 import {DateTimeWork} from "./DateTimeWork.js"
 
 let url = "CityOfUkrain.json";
@@ -32,7 +39,6 @@ export let xhr = new XHR(false);
                             let regionName = regions[i].name;
                             for (let j = 0; j < regions[i].areas.length; j++) {
                                 addTagPMenu(regions[i].areas[j].name, regionName, regions[i].areas[j].name, text);
-                                detachWhenPTextEqualeName(regions[i].areas[j].name);
                             }
                         }
                     }

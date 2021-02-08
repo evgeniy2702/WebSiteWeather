@@ -1,6 +1,6 @@
 //Класс для работы с элементами(тегами) закладки Today
 
-import {weatherByDate,weatherByDay} from "./FiveDays.js";
+import {weatherByDate, weatherByDay} from "./FiveDays.js";
 
 export let urlTargetsByCoor = ["http://api.openweathermap.org/data/2.5/forecast?id=","&appid=87902ca551d8f9194521e2cee90831ea"];
 
@@ -102,14 +102,20 @@ export function detachWhenLengthPNull() {
 
 //Ф-ция удаляет теги Р с одинаковыми значениями
 export function detachWhenPTextEqualeName(name) {
-     document.querySelectorAll('#header > form > p')
-         .forEach(p => () => {
-             if(p.innerHTML === name){
-             this.detach();
-         }
-     });
+    let p = document.querySelectorAll('#header > form > p');
+    if (p.length > 0) {
+        for (let i = 0; i < p.length; i++) {
+            if (p[i].childNodes[0].innerText.toLowerCase().substring(0, (name.length)) === name.toLowerCase()) {
+                for (let j = 0; j < i; j++) {
+                    if (p[i].childNodes[0].innerText === p[j].childNodes[0].innerText) {
+                        p[i].remove();
+                    }
+                }
+            }
+        }
+    }
 
-    //эта же ф-ция на JQuery
+    // эта же ф-ция на JQuery
     // $('#header > form > p').each(function () {
     //     if ($(this).text() === name) {
     //         $(this).detach();
@@ -266,13 +272,13 @@ export function addTagPMenu(name,regionName,regions,text) {
             p.style.position = 'relative';
             document.querySelector('form').append(p);
         }
-        for(let a = 0; a < pp.length; a++){
-            for(let b = (a + 1); b < pp.length; b++){
-                if(pp[a].innerHTML === pp[b].innerHTML){
-                    pp[b].remove();
-                }
-            }
-        }
+        // for(let a = 0; a < pp.length; a++){
+        //     for(let b = (a + 1); b < pp.length; b++){
+        //         if(pp[a].innerHTML === pp[b].innerHTML){
+        //             pp[b].remove();
+        //         }
+        //     }
+        // }
 
         //эта же ф-ция на JQuery
         // if ($('#header > form > p').length < 10) {
@@ -290,7 +296,7 @@ export function addTagPMenu(name,regionName,regions,text) {
         //     }
         // }
     } else {
-        detachWhenPTextEqualeName(regions);
+        detachWhenPTextEqualeName(text);
     }
 }
 
